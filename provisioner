@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+sudo apt-get update
+
+sudo apt-get -y remove 2.7.*
+sudo apt-get -y autoremove
+
+cd /opt/
+mkdir wschat/
+cd wschat/
+
+sudo sudo apt-get -y install python3-pip python3-dev git
+pip3 install nameko
+pip3 install flask
+pip3 install flasgger
+pip3 install pexpect
+pip3 install git+https://github.com/tgalal/yowsup@master
+# Install RabbitMQ
+sudo apt-get install -y rabbitmq-server
+
+git clone https://github.com/EliasKotlyar/yowsup-microservice.git .
+
+mv serviceconfig.yml.sample serviceconfig.yml
+
+chmod +x startservice.sh
+chmod +x startapi.sh
